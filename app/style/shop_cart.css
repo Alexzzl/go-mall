@@ -1,0 +1,14 @@
+
+.shop-icon {
+    position: relative;
+}
+
+.shop-num {
+    position: absolute;
+    color: black;
+    font-family: "Source Sans Pro";
+    font-size: 19px;
+    z-index: 100;
+    left: 29px;
+    top:-4.5px;
+}

@@ -1,0 +1,165 @@
+.main-block-detail {
+    margin: 0 auto;
+    width: 640px;
+
+}
+.shop-detail-container {
+
+    height: 568px;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+}
+
+.shop-detail-container .image {
+    margin-top: 10px;
+    height: 426px;
+    background-color: white;
+}
+
+
+.shop-detail-container-detail {
+
+    height: 508px;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+}
+
+.shop-detail-container-detail .image {
+    margin-top: 10px;
+    height: 426px;
+    background-color: white;
+}
+
+
+.shop-detail-desc {
+    font-family: 'Source Sans Pro';
+    width: 100%;
+    height:75px;
+    display: flex;
+    flex-direction: column;
+}
+.shop-detail-desc .name {
+    text-decoration: none;
+    color: #8a8a8a;
+    font-size: 25px;
+    height: 50px;
+    margin-top: 1px;
+    margin-left: 20px;
+}
+.description {
+    display: flex;
+    height: 36px;
+    justify-content: space-between;
+    padding-bottom: 4px;
+    border-color: silver;
+    border-style: solid;
+    border-width: 1px;
+    border-top: none;
+    border-left: none;
+    border-right:none;
+
+}
+.description  .price {
+    height: 19px;
+    font-size: 16px;
+    color: black;
+    margin-left: 20px;
+}
+.description  .stock {
+    height: 19px;
+    font-size: 16px;
+    color: black;
+    margin-right: 20px;
+}
+
+.action {
+    height: 65px;
+    display: flex;
+    padding-top: 16px;
+    justify-content: space-between;
+}
+.action-like {
+    padding-left: 20px;
+
+}
+.action-share {
+    padding-right: 290px;
+}
+.action-cart {
+    padding-right: 20px;
+}
+.good-description {
+    box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+    border: 1px solid silver;
+    border-top: none;
+    padding: 15px 20px;
+    font-size: 16px;
+}
+.comments {
+    box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+    border: 1px solid silver;
+    padding: 15px 20px;
+}
+.comments .title {
+    font-size: 22px;
+    border-bottom: none;
+}
+
+.comments .content {
+    padding-top: 10px;
+    height: 67px;
+    font-size: 18px;
+    display: block;
+    position: relative;
+}
+
+.comments .content .avator {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background: #c1c1c1;
+    display: inline-block;
+    position: absolute;
+}
+
+.comments .content .name {
+    display: inline-block;
+    position: absolute;
+    left: 95px;
+}
+
+.comments .content .detail-content {
+    display: inline-block;
+    position: absolute;
+    left: 95px;
+    top: 40px;
+}
+.comments .content .update_time {
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    right: 1px;
+}
+
+.comments .submit {
+    display: flex;
+    flex-direction: column;
+}
+.comments .submit title {
+    padding-top: 10px;
+    font-size: 22px;
+
+}
+.comments .submit .div {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.comments .submit .content {
+    font-size: 18px;
+    width: 100%;
+
+}

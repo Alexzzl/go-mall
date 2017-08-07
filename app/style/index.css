@@ -1,0 +1,35 @@
+.main_block {
+    margin: 0 auto;
+    width: 640px;
+    background-color: #ffffff;
+}
+.index_search_block {
+    height: 35px;
+
+}
+
+.affix_search {
+    width: 560px;
+    height: 35px;
+    float:left;
+    /*background-color: brown;*/
+}
+.affix_user {
+    width: 80px;
+    padding-right: 10px;
+    height: 35px;
+    float:left;
+    /*background-color: black;*/
+}
+.affix_user img {
+    width: 70px;
+    height: 35px
+}
+.login_btn {
+    height: 35px;
+    text-align:center;
+    display:block;
+    padding-top: 7px;
+    font-size: 13px;
+    color: #fff;
+}
