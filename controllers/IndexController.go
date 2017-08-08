@@ -419,8 +419,10 @@ func (c *IndexController) CartProduceOrder() {
 	}
 	var result = make([]goodcart_goods, nums)
 	nums = 0
+	totalprice := float32(0)
 	for _, item := range GroupBy {
 		result[nums] = goodcart_goods{Name: item.Name, Num: item.Num, Price: item.Price}
+		totalprice += item.Price * (float32)(item.Num)
 		nums += 1
 	}
 	var result_json = make(map[string]interface{})
@@ -438,15 +440,8 @@ func (c *IndexController) CartProduceOrder() {
 
 	ormSession := orm.NewOrm()
 	ormSession.Begin()
-	userOrder := models.Orders{User: user, Status: 0}
-	if _, err := ormSession.Insert(&userOrder); err != nil {
-		fmt.Println("orders error", err.Error())
-		c.Data["json"] = map[string]interface{}{
-			"ok":      false,
-			"message": "执行失败",
-		}
-		return
-	}
+	userOrder := models.Orders{User: user, Status: 0, TotalPrice: totalprice}
+
 	for index, item := range result {
 		goodDetails[index] = models.OrderDetail{
 			GoodName: item.Name, GoodNum: item.Num, GoodPrice: item.Price,
@@ -455,6 +450,15 @@ func (c *IndexController) CartProduceOrder() {
 			AddressDetail: user.ShopAddress[0].DetailAddress,
 			Order:         &userOrder,
 		}
+	}
+
+	if _, err := ormSession.Insert(&userOrder); err != nil {
+		fmt.Println("orders error", err.Error())
+		c.Data["json"] = map[string]interface{}{
+			"ok":      false,
+			"message": "执行失败",
+		}
+		return
 	}
 
 	if _, err := ormSession.InsertMulti(nums, goodDetails); err != nil {
@@ -497,4 +501,35 @@ func (c *IndexController) OrderFilter() {
 		"ok":   true,
 		"data": result[:index],
 	}
+}
+
+//订单状态更新
+type OrderUpdate struct {
+	OrderID int
+	Status  string
+}
+
+func (c *IndexController) OrderStatusUpdate() {
+	defer c.ServeJSON()
+
+	var body OrderUpdate
+	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &body); err == nil {
+		if v := GetOrderById(body.OrderID); v != nil {
+			var action models.OrderAction
+
+			if body.Status == "orderPay" {
+				action.ActionType = 1
+				action.OrderId = body.OrderID
+			} else if body.Status == "orderComplete" {
+				action.ActionType = 2
+				action.OrderId = body.OrderID
+			}
+			if ret, _ := v.Dispatch(action); ret == true {
+				c.Data["json"] = map[string]interface{}{
+					"ok": true}
+				return
+			}
+		}
+	}
+	c.Data["json"] = map[string]interface{}{"ok": false}
 }

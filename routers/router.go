@@ -25,7 +25,8 @@ func init() {
 		beego.NSRouter("/good/seckill", &controllers.IndexController{}, "GET:SecKillGoods"),
 		beego.NSRouter("/user/good_cart", &controllers.IndexController{}, "GET:CartSummary"),
 		beego.NSRouter("/user/orders", &controllers.IndexController{}, "GET:ShowOrders"),
-		beego.NSRouter("/user/cart", &controllers.IndexController{}, "GET:CartProduceOrder"),
+		beego.NSRouter("/user/cart", &controllers.IndexController{}, "POST:CartProduceOrder"),
+		beego.NSRouter("order_update", &controllers.IndexController{}, "POST:OrderStatusUpdate"),
 	)
 	beego.AddNamespace(ns)
 	// 页面路由
@@ -33,7 +34,7 @@ func init() {
 	//访问商品详情页面
 	beego.Router("/good/:good_id([0-9]+)", &controllers.IndexController{}, "GET:GoodDetailIndex")
 	// 访问用户购物车页面
-	beego.Router("/user/shop_cart", &controllers.IndexController{}, "GET:ShopCartDetail")
+	beego.Router("/shop_cart", &controllers.IndexController{}, "GET:ShopCartDetail")
 	// 访问订单页面
 	beego.Router("/order", &controllers.IndexController{}, "GET:OrderIndex")
 }

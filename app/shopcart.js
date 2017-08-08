@@ -39,7 +39,7 @@ class ShopCart extends  Component {
 
     componentWillMount(){
         let total_price = 0
-         fetch("/api/user/good_cart").then(res => res.json()).then(data => {
+         fetch("/api/user/good_cart", { credentials: 'same-origin'}).then(res => res.json()).then(data => {
                function getdata(data_) {
                 console.log("购物车里面的东西在哪里咧: ", data)
                 let res =  data_ .map((item, index)=>{
@@ -68,7 +68,18 @@ class ShopCart extends  Component {
                 })
                 
     }
-
+    click(){
+        fetch("/api/user/cart", {
+            credentials: 'same-origin',
+            method: 'POST',
+        }).then(data=>data.json()).then(data=>{
+            if(data.ok == true) {
+                alert("订单生成成功")
+            } else {
+                alert("订单生成失败" + data.message)
+            }
+        })
+    }
     render (){
         let total_price = this.state.total_price
         return (
@@ -91,7 +102,7 @@ class ShopCart extends  Component {
                         <span className="total-price">
                             总价格: ￥{total_price}
                         </span>
-                    <div className="button">
+                    <div className="button" onClick={this.click}>
                         <Button>购买</Button>
                     </div>
                 </div>

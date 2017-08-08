@@ -22,7 +22,7 @@ class ShopCart extends Component {
         const {GoodNum} = this.props
         return (
              <div>
-                 <a href="/user/shop_cart">
+                 <a href="/shop_cart">
                     <p className="shop-icon">
                         <Icon style={icon_style} type="shopping-cart"></Icon>
                         {

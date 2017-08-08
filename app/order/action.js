@@ -4,7 +4,7 @@ import fetch from 'isomorphic-fetch'
 export function PayAction(orderId) {
     let request_data = {
         OrderID: orderId,
-        status: "orderPay"
+        Status: "orderPay"
     }
 
     fetch("/api/order_update", {
@@ -23,7 +23,7 @@ export function PayAction(orderId) {
 export function CompleteAction(orderId) {
     let request_data = {
         OrderID: orderId,
-        status: "orderComplete"
+        Status: "orderComplete"
     }
     fetch("/api/order_update", {
         method: 'POST',

@@ -13,6 +13,8 @@ function statusTrans(status) {
         ret = "立即支付"
     } else if (status == 1) {
         ret = "订单完成"
+    } else if(status == 2) {
+        ret = "订单结束"
     }
     return ret;
 }
@@ -50,9 +52,15 @@ class OrderIndex2 extends Component {
                 dataIndex: "status",
                 key: "status",
                 render: text => {
-                    return <Button onClick={()=>{
-                      StatusAction(text.OrderId, text.status)
-                    }}> {statusTrans(text.status)}</Button>
+
+                    if (text.status < 2) {
+                        return <Button onClick={() => {
+                            StatusAction(text.OrderId, text.status)
+                        }}> {statusTrans(text.status)}</Button>
+                    } else {
+                        return <Button disabled>{statusTrans(text.status)}</Button>
+                    }
+
                 }
             }
         ]
@@ -78,7 +86,7 @@ class OrderIndex2 extends Component {
                     totalPrice: item.TotalPrice,
                     status: {
                         OrderId: item.Id,
-                        status: item.TotalPrice
+                        status: item.Status
                     }
                 }
             })
@@ -107,7 +115,7 @@ class OrderIndex2 extends Component {
                     totalPrice: item.TotalPrice,
                     status: {
                         OrderId: item.Id,
-                        status: item.TotalPrice
+                        status: item.Status
                     }
                 }
             })

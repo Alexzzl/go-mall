@@ -175,6 +175,7 @@ type OrderDetail struct {
 }
 
 type reduceFunc func(int, OrderAction) (int, error)
+
 // 省略redux中的createstore函数， 直接将reduce函数进行绑定
 func (order *Orders) registerReduce(reduceFunc reduceFunc) {
 	order.reduceFuncPoint = reduceFunc
@@ -205,7 +206,7 @@ func (order *Orders) Dispatch(action OrderAction) (bool, error) {
 
 // 订单状态发生变化的action
 type OrderAction struct {
-	// 1表示支付action， 2表示用户收货的action
+	// 1表示支付action， 2表示订单完成的action
 	ActionType int
 	OrderId    int
 }
