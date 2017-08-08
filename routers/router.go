@@ -30,7 +30,10 @@ func init() {
 	beego.AddNamespace(ns)
 	// 页面路由
 	beego.Router("/", &controllers.IndexController{}, "GET:Index")
+	//访问商品详情页面
 	beego.Router("/good/:good_id([0-9]+)", &controllers.IndexController{}, "GET:GoodDetailIndex")
-	beego.Router("/good_cart", &controllers.IndexController{}, "GET:ShopCartDetail")
+	// 访问用户购物车页面
+	beego.Router("/user/shop_cart", &controllers.IndexController{}, "GET:ShopCartDetail")
+	// 访问订单页面
 	beego.Router("/order", &controllers.IndexController{}, "GET:OrderIndex")
 }
