@@ -1,5 +1,3 @@
-
-
 import React, { Component, PropTypes } from 'react'
 import {connect} from 'react-redux'
 import {Modal, Form, Icon, Input, Button, Checkbox} from 'antd'
@@ -18,7 +16,7 @@ class UserInfoComponent extends Component{
     }
     // 用户登录
     LoginHandler(){
-        //this.setState({modal_status: true})
+        // this.setState({modal_status: true})
         let {dispatch,  GoodNum} = this.props
         dispatch(modal_show(GoodNum.modal_status))
         return false;
@@ -45,7 +43,7 @@ class UserInfoComponent extends Component{
         const {GoodNum} = this.props
         let user_info_url = ""
         let login_status = GoodNum.login_status
-        console.log("start 222222render", GoodNum.login_status)
+        //console.log("start 222222render", GoodNum.login_status)
         if(login_status == true) {
             user_info_url = '/user/' + GoodNum.UserId
         }

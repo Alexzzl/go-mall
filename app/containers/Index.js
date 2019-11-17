@@ -1,4 +1,3 @@
-
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import {Icon, Affix, Button, Input} from 'antd'
@@ -42,34 +41,34 @@ class App extends  Component{
             },
             {
                 "name": "服装",
+                type_code: "clothes"
+            },
+            {
+                "name": "水果",
                 "link": 'fegeg'
             },
             {
-                "name": "服装",
+                "name": "家居",
                 "link": 'fegeg'
             },
             {
-                "name": "服装",
+                "name": "日化",
                 "link": 'fegeg'
             },
             {
-                "name": "服装",
+                "name": "干果",
                 "link": 'fegeg'
             },
             {
-                "name": "服装",
+                "name": "茶叶",
                 "link": 'fegeg'
             },
             {
-                "name": "服装",
+                "name": "玩具",
                 "link": 'fegeg'
             },
             {
-                "name": "服装",
-                "link": 'fegeg'
-            },
-            {
-                "name": "服装",
+                "name": "美妆",
                 "link": 'fegeg'
             },
         ]
@@ -108,7 +107,7 @@ class App extends  Component{
                             </div>
                             <div style={{float: "left"}}>
                             <Search
-                                placeholder="热点课程"
+                                placeholder="热门商品"
                                 style={{ width: 500, marginLeft: 0, height: 35}}
                                 onSearch={value => console.log(value)}
                                 onFocus={() => this.on_fcourse(display_mode)}
@@ -128,7 +127,7 @@ class App extends  Component{
                     </div>
                     :
                     <div style={{height: 900}}>
-                        <p> 各个呵呵呵呵呵呵呵呵呵</p>
+                        <p>你想搜索什么？</p>
                     </div>
                     }
 

@@ -1,5 +1,3 @@
-
-
 import fetch from 'isomorphic-fetch'
 
 //获取所有的评论
@@ -92,7 +90,7 @@ export function GetDetail(good_id) {
                     image: j.Image
                 }
                 dispatch_(GetDetailAction(info))
-            })        
+            })
         })
     }
 }

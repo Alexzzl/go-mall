@@ -23,8 +23,6 @@ function comments_redux(state=init_state, action){
             return state
     }
 
-
-
 }
 
 const DetailApp = combineReducers({

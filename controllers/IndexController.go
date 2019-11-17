@@ -4,7 +4,6 @@ import (
 	"OnlineShop/requests"
 	"OnlineShop/response"
 	"encoding/json"
-	// "fmt"
 	"OnlineShop/models"
 	"fmt"
 	"github.com/astaxie/beego"
@@ -19,7 +18,7 @@ type IndexController struct {
 }
 
 // 用户登录
-// api /api/user/login
+// /api/user/login
 func (c *IndexController) UserLogin() {
 
 	defer func() {
@@ -29,10 +28,9 @@ func (c *IndexController) UserLogin() {
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &body); err != nil {
 		c.Data["json"] = response.FailRes("数据格式不正确")
 	} else {
-		username, password := body.UserName, body.Password
-		username = "zz@qq.com"
-		password = "0000"
-		if code, user := UserLogin(username, password); code == true {
+        // 从json中获取email和password
+        useremail, password := body.UserName, body.Password
+		if code, user := UserLogin(useremail, password); code == true {
 			c.SetSession("session", user.Id)
 			shop_cart_nums, _ := GetUserShopCartNum(user.Id)
 			c.Data["json"] = map[string]interface{}{"ok": true, "data": map[string]interface{}{
@@ -40,7 +38,7 @@ func (c *IndexController) UserLogin() {
 				"image":       user.Image,
 				"UserId":      user.Id,
 				"ShopCartNum": shop_cart_nums,
-			}}
+            }}
 		} else {
 			c.Data["json"] = response.FailRes("用户名或者密码错误")
 		}
@@ -51,7 +49,8 @@ func (c *IndexController) UserLogin() {
 func (c *IndexController) UserInfo() {
 	defer c.ServeJSON()
 
-	user_id := c.GetSession("session")
+    user_id := c.GetSession("session")
+    //fmt.Println(user_id)  // 埋点1
 	if user_id == nil {
 		c.Data["json"] = map[string]interface{}{"ok": false, "message": "no auth"}
 	} else {

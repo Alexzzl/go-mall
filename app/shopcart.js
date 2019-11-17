@@ -1,5 +1,3 @@
-
-
 import React, {Component} from "react"
 import {Table} from "antd"
 import ReactDOM from 'react-dom';
@@ -66,7 +64,7 @@ class ShopCart extends  Component {
                      total_price: total_price
                   })
                 })
-                
+
     }
     click(){
         fetch("/api/user/cart", {
@@ -88,15 +86,12 @@ class ShopCart extends  Component {
                     <span className="span">购物车结算</span>
                 </div>
                 <div className="main">
-
-
                     <div className="address-div">
                         <span className="address-name">{ this.state.address.name }</span>
                         <span className="address-phone">{ this.state.address.phone }</span>
                         <span className="address-detail">{ this.state.address.address } </span>
                     </div>
                     <Table pagination={false} columns={this.colums} dataSource={this.state.data}></Table>
-
                 </div>
                 <div className="button-parent">
                         <span className="total-price">
@@ -110,7 +105,6 @@ class ShopCart extends  Component {
         );
     }
 }
-
 
 let rootElement = document.getElementById('root')
 ReactDOM.render(<ShopCart/>, rootElement)

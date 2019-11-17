@@ -1,6 +1,3 @@
-
-
-
 import React from "react"
 import ReactDOM from "react-dom"
 import OrderIndex2 from "../app/order/order_index"

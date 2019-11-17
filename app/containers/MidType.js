@@ -36,7 +36,7 @@ class ShopShow extends Component {
         }
         return goods.map((item, index)=> {
 
-                console.log("\n\n\n1224535464g5u5hjg4g4g34g4g43fg4")
+                //console.log("\n\n\n1224535464g5u5hjg4g4g34g4g43fg4")
                 return(
                 <li key={index} className="sectime-item-li">
                     <img className="sectime-item-li-img" src={item.Good.Image}></img>

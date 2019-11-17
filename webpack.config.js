@@ -33,7 +33,7 @@ module.exports = {
         },
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js[x]?$/,
                 exclude: /node_modules/,
@@ -44,12 +44,15 @@ module.exports = {
                     options: {
                         babelrc: false,
                         presets: [
-                            'es2015',
+                            'env',
                             'stage-0',
                             'react'
                         ],
                         plugins: [
-                            ['import', {libraryName: 'antd', style: 'css'}],
+                            ['import', {
+                                libraryName: 'antd',
+                                style: 'css'
+                            }],
                         ]
                     }
                 }]
@@ -74,7 +77,7 @@ module.exports = {
         inline: true
     },
     plugins: [
-        new webpack.NoErrorsPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ]
 };

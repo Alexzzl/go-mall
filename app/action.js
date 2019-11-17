@@ -61,7 +61,7 @@ function FetchGetUserInfo() {
                         Userid: json.ok == true ? json.data.UserId:"",
                         login_status: json.ok
                     }
-                    console.log("sttttttttt:+" + user_info.login_status)
+                    console.log("sttttt" + user_info.login_status)
                     if ( json.ok == true) {
                         user_info.GoodNum = json.data.ShopCartNum
                     }
