@@ -20,7 +20,8 @@
     "redux": "^3.7.1",
     "redux-thunk": "^2.2.0",
     "style-loader": "^0.18.2",
-    "webpack-dev-server": ">=3.1.11"
+    "webpack-dev-server": ">=3.1.11",
+    "js-yaml": ">=3.13.1"
   },
   "devDependencies": {
     "babel-preset-env": "^1.7.0",
